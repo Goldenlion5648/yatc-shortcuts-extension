@@ -1,0 +1,81 @@
+{
+  "name": "yatc-shortcuts",
+  "displayName": "YATC Shortcuts",
+  "description": "shortcuts for You Are The Code (yatc) files",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^0.1.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:youarethecode",
+    "onCommand:yatc-shortcuts.goUpAFolder"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "youarethecode",
+        "extensions": [
+          ".yatc"
+        ],
+        "aliases": [
+          "You Are The Code"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "yatc-shortcuts.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "yatc-shortcuts.goUpAFolder",
+        "title": "YATC: Go Up One Folder"
+      },
+      {
+        "command": "yatc-shortcuts.goToDisplayOrder",
+        "title": "YATC: Go To Display Order"
+      },
+      {
+        "command": "yatc-shortcuts.goToLevelList",
+        "title": "YATC: Go To Level List"
+      }
+    ],
+    "keybindings":[
+      {
+        "command": "yatc-shortcuts.goToDisplayOrder",
+        "key": "alt+d"
+      },
+      {
+        "command": "yatc-shortcuts.goUpAFolder",
+        "key": "alt+q"
+      },
+      {
+        "command": "yatc-shortcuts.goToLevelList",
+        "key": "alt+l"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  }
+}
