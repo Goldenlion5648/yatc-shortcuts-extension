@@ -1,10 +1,10 @@
 {
   "name": "yatc-shortcuts",
-  "displayName": "YATC Shortcuts",
-  "description": "shortcuts for You Are The Code (yatc) files",
+  "displayName": "You Are The Code Shortcuts",
+  "description": "Shortcuts for working with You Are The Code (yatc) files",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^0.1.0"
+    "vscode": "^1.100.2"
   },
   "categories": [
     "Other"
@@ -23,7 +23,8 @@
         ],
         "aliases": [
           "You Are The Code"
-        ]
+        ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "commands": [
@@ -44,6 +45,12 @@
         "title": "YATC: Go To Level List"
       }
     ],
+    "snippets": [
+			{
+				"language": "youarethecode",
+				"path": "snippets/yatc_templates.code-snippets"
+			}
+		],
     "keybindings":[
       {
         "command": "yatc-shortcuts.goToDisplayOrder",

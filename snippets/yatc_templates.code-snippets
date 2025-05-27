@@ -1,0 +1,57 @@
+{
+	// Place your you_are_the_code2 workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"yatc template": {
+		"scope": "youarethecode",
+		"prefix": "yatc template",
+		"body": [
+			"store \\$a = 5",
+			"output 7",
+			"",
+			"123",
+			"==================="
+		]
+	},
+	"show coins": {
+		"scope": "youarethecode",
+		"prefix": "show coin",
+		"body": [
+			"show $1 \\$coins"
+		]
+	},
+	"show gems": {
+		"scope": "youarethecode",
+		"prefix": "show gems",
+		"body": [
+			"show $1 \\$Gems"
+		]
+	},
+	"if": {
+		"scope": "youarethecode",
+		"prefix": "if $",
+		"body": [
+			"if $1 then $0"
+		]
+	},
+	"store $a": {
+		"scope": "youarethecode",
+		"prefix": "store $a",
+		"body": [
+			"store \\$a = \\$a + 1"
+		],
+		"description": "store value plus 1"
+	},
+	"store $Gems": {
+		"scope": "youarethecode",
+		"prefix": "store $Gems",
+		"body": [
+			"~store \\$Gems = \\$Gems + 1"
+		],
+		"description": "store value plus 1"
+	},
+}

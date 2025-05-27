@@ -1,0 +1,94 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "You are the Code",
+	"patterns": [
+		{
+			"include": "#everything"
+		}
+	],
+	"repository": {
+		"everything": {
+			"patterns": [
+				{
+					"name": "keyword.control.youarethecode",
+					"match": "(goto|swap|run|dupe|remove|replace|delete|if|then|else|\\^typing)\\b"
+				},
+				{
+					"name": "store.yatc",
+					"match": "\\b(store|load|enter|save|reload|reset|discard)\\b"
+				},
+				{
+					"name": "relative_spot.yatc",
+					"match": "\\b(above|below|prev|next|offset)\\b"
+				},
+				{
+					"name": "level_name.yatc",
+					"match": "@.+"
+				},
+				{
+					"name": "broken.yatc",
+					"match": "\\b(broken).*?"
+				},
+				{
+					"name": "support.constant",
+					"match": "(toggle|pay|output|show|close|all|text|vars|changes|bugs|variables)\\b"
+				},
+				{
+					"name": "entity.name.class",
+					"match": "(\\$\\w+)|label"
+				},
+				{
+					"name": "constant.language",
+					"match": "\\b(?:true|false|\\d+)\\b"
+				},
+				{
+					"name": "lines.yatc",
+					"match": "\\b(lines|zap)\\b"
+				},
+				{
+					"name": "comment.block.documentation.yatc",
+					"match": "##.*"
+				},
+				{
+					"name": "comment.line.yatc",
+					"match": "#.*"
+				},
+				{
+					"name": "level_list_reference.yatc",
+					"match": "&.*"
+				},
+				{
+					"name": "fragile.yatc",
+					"match": "~"
+				},
+				{
+					"name": "string.quoted.double.youarethecode",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.youarethecode",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "comment.block",
+					"begin": "^=",
+					"end": "$",
+					"patterns": [
+						{
+							"name": "constant.character.escape.youarethecode",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "math_symbols.yatc",
+					"match": "\\+|-|>|<|!=|=|!|:|\\*|/|%|\\^"
+				}
+			]
+		}
+	},
+	"scopeName": "source.yatc"
+}

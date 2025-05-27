@@ -37,24 +37,7 @@ function getStartingPosOfLevelFromLevelDoc(levelDoc: vscode.TextDocument, levelN
 
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (yatc_output.appendLine) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	
-	// yatc_output.appendLine('Congratulations, your extension "yatc-shortcuts" is now active!');
-
-	// //Write to output.
-	yatc_output.appendLine("I am a banana.");
 	yatc_output.show()
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('yatc-shortcuts.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from YATC Shortcuts!');
-		// yatc_output.appendLine('You used hello world in yatc');
-	});
-	context.subscriptions.push(disposable);
 
 	let goUpAFolder = vscode.commands.registerCommand('yatc-shortcuts.goUpAFolder', async () => {
 		const editor = vscode.window.activeTextEditor;
