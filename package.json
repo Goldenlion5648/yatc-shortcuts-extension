@@ -6,6 +6,9 @@
   "engines": {
     "vscode": "^1.100.2"
   },
+  "repository": {
+    "url": "https://github.com/Goldenlion5648/yatc-shortcuts-extension"
+  },
   "categories": [
     "Other"
   ],
