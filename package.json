@@ -2,7 +2,7 @@
   "name": "yatc-shortcuts",
   "displayName": "You Are The Code Shortcuts",
   "description": "Shortcuts for working with You Are The Code (yatc) files",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "thinkwithgames",
   "engines": {
     "vscode": "^1.100.2"

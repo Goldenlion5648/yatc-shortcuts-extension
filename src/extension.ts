@@ -1,9 +1,5 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 let yatc_output = vscode.window.createOutputChannel("yatc-output");
 
 function getNonDisplayOrderURI(document: vscode.TextDocument) {
@@ -17,7 +13,6 @@ function getStartingPosOfLevelFromLevelDoc(levelDoc: vscode.TextDocument, levelN
 	const match = levelNameToFind.match(/\d+/)
 	const digitToFind: Number = parseInt(match ? match[0] : "0")
 	var curLevelCount = 1;
-	// yatc_output.appendLine(`level doc ${levelDoc.fileName}`)
 	for (let i = 0; i < levelDoc.lineCount - 2; i++) {
 		if(Number.isInteger(digitToFind) && digitToFind == curLevelCount) {
 			return new vscode.Position(i, 0)
@@ -77,7 +72,6 @@ export function activate(context: vscode.ExtensionContext) {
 		{ language: 'youarethecode' },
 		{
 			provideDefinition(document, position, token) {
-				// yatc_output.appendLine('You used definition in yatc');
 				const word = document.getText(document.getWordRangeAtPosition(position));
 				if(document.lineAt(position.line).text.includes("/") == false) {
 					yatc_output.appendLine("doing top")
@@ -85,15 +79,11 @@ export function activate(context: vscode.ExtensionContext) {
 						let levelPos = getStartingPosOfLevelFromLevelDoc(doc, word)
 						return new vscode.Location(doc.uri, levelPos)
 					})
-					// const nonDisplayTextDoc: vscode.TextDocument = TextDoc
 				}
 				yatc_output.appendLine("doing bottom")
-				// // Logic to find where `word` is defined
 				const parent_folder = vscode.Uri.joinPath(vscode.Uri.file(document.fileName), "../")
-				const targetUri = vscode.Uri.joinPath(parent_folder, word, "display_order.yatc"); // dynamic path
+				const targetUri = vscode.Uri.joinPath(parent_folder, word, "display_order.yatc");
 				
-				// yatc_output.appendLine('Target is' + targetUri);
-				// const targetPosition = new vscode.Position(line, character);
 				let pos: vscode.Position = new vscode.Position(0, 0)
 				return new vscode.Location(targetUri, pos);
 			}
