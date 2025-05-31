@@ -32,7 +32,7 @@ function getStartingPosOfLevelFromLevelDoc(levelDoc: vscode.TextDocument, levelN
 
 export function activate(context: vscode.ExtensionContext) {
 
-	yatc_output.show()
+	// yatc_output.show()
 
 	let goUpAFolder = vscode.commands.registerCommand('yatc-shortcuts.goUpAFolder', async () => {
 		const editor = vscode.window.activeTextEditor;

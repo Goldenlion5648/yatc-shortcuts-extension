@@ -6,8 +6,15 @@ This VSCode Extension aids with creating levels for the game "You Are The Code" 
 
 * Snippets for storing "Gems", "show" lines, and more
 * Syntax highlighting for .yatc files (the file format for levels in You Are The Code)
-* Go to defintion works on `enter level4` to go to the referenced level4
-* Keyboard shortcuts to go to the display order file, or up a folder
+![feature X](images/highlighting_image.png)
+
+
+* Go to defintion works on `enter level4` to go to the referenced level4 (this is a default shortcut in VSCode)
+* Keyboard shortcuts:
+    - goToDisplayOrder is alt+d
+    - goUpAFolder is alt+q
+    - goToLevelList is alt+l
+    
 
 ## Requirements
 

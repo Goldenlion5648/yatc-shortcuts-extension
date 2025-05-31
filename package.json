@@ -56,6 +56,13 @@
 				"path": "snippets/yatc_templates.code-snippets"
 			}
 		],
+    "grammars": [
+			{
+				"language": "youarethecode",
+				"scopeName": "source.yatc",
+				"path": "syntaxes/youarethecode.tmLanguage.json"
+			}
+		],
     "keybindings":[
       {
         "command": "yatc-shortcuts.goToDisplayOrder",

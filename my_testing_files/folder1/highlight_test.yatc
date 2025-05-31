@@ -1,0 +1,230 @@
+output 8
+swap 3 5
+output 6
+output 2
+output 97->
+
+978
+===================
+output 8-->
+goto 4 below
+goto 4 offset
+output 9
+output 9
+goto 1
+output 3->
+output 7---->
+toggle test
+
+8387
+===================
+output 9
+run next 3
+output 1->
+output 4->
+output 7->
+
+
+1479
+===================
+run next 4 lines
+output 7--->
+output 8>
+broken
+output 9---->
+
+
+799
+===================
+output 87--->
+output 235->
+goto 1 above
+output 8->
+output 8->
+
+28
+===================
+dupe 3
+output 235->
+output 8>
+output 4->
+
+888
+===================
+dupe 4 below
+goto 5
+output 235->
+output 8
+output 4->
+dupe 3 above
+
+323
+===================
+output 7---->
+output 234
+dupe 1 above---->
+output $line_num
+
+267
+===================
+output 1---->
+output 2
+output 3
+*test1
+
+2434
+===================
+store $a = 5->
+output 3
+output $a
+load test1
+
+
+355
+===================
+run next 3 lines
+output 9
+output 1->
+output 7->
+*test1
+
+
+1479
+===================
+output 9
+output 1--->
+run prev 2
+run next 2
+output 5
+output 6
+output 7--->
+
+
+1479
+===================
+store $a = 3
+goto $a
+output 4
+
+1479
+===================
+store $a = 3
+zap $a
+output 4-->
+zap 3
+
+56
+===================
+##test block
+enter test2
+
+
+355
+===================
+@display_order
+&og_levels
+
+pay 3
+
+===================
+~output 7
+output 5
+~output 7
+
+775
+
+store $c = 54321
+store $c = $c * 10 + 9
+store $c = $c / 10
+store $c = $c % 1000
+output $c
+
+4329
+===================
+goto 2
+store $a = $a + 21000->
+output $a
+
+21233
+===================
+~store $a = 4
+store $a = $a * 2
+store $b = $a % 3
+output $a
+output $b
+
+40
+===================
+store $a = 5
+typing
+^typing
+^ $a ^
+if $a > 2 then output 3
+if $a == 1 then output 1
+~if $a != 1 then store $Gems = $Gems + 1
+store $a = 1
+label xifbroken
+brokenlabel
+brokenif
+brokenoutput
+
+123
+===================
+~store $a = 4
+store $a = $a * 2
+store $b = $a % 3
+output $a
+output $b
+
+801
+===================
+=================
+
+===================
+swap 3 1
+swap 2 3
+run next 3
+brokenoutput 4
+output 7
+output 2
+
+
+456789
+===================
+# ===================
+# output 5
+# output 234
+#         ^^
+
+# 534
+!$x:12
+store $x = 5
+output $x
+
+12
+==============
+##testing only
+discard changes
+save all
+save text
+save vars
+save bugs
+store $a = $a + 1
+swap $a $b
+output 8---->
+store $b = $a - 1
+
+
+341
+==============
+discard changes
+store $a = $a + 1
+swap $a $b
+output 8---->
+store $b = $a - 1
+save variables
+reload bugs
+
+
+222
+==============
