@@ -1,5 +1,8 @@
 # Change Log
 
+0.0.5
+- Fix goto definition with named levels
+
 0.0.3
 - Fix typos
 

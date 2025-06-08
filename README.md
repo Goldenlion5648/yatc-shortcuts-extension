@@ -19,3 +19,8 @@ This VSCode Extension aids with creating levels for the game "You Are The Code" 
 ## Requirements
 
 To run your levels, you need to be using the full version of the game "You Are The Code". The game releases in July 2025, available here https://store.steampowered.com/app/3333330/You_Are_The_Code?utm_source=vscode, but for now you can play the demo version here: https://store.steampowered.com/app/3628770/You_Are_The_Code_Demo?utm_source=vscode
+
+
+## Running
+
+Launch debug mode while the extension.ts file is open (this has the prebuild task that compiles your typescript before launching a new editor that has the changes loaded)
