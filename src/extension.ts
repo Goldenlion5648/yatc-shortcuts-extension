@@ -10,20 +10,23 @@ function getNonDisplayOrderURI(document: vscode.TextDocument) {
 }
 
 function getStartingPosOfLevelFromLevelDoc(levelDoc: vscode.TextDocument, levelNameToFind: String): vscode.Position {
-	const match = levelNameToFind.match(/\d+/)
-	const digitToFind: Number = parseInt(match ? match[0] : "0")
-	var curLevelCount = 1;
+	const match = levelNameToFind.match(/level(\d+)/)
+	const digitToFind: number = parseInt(match ? match[1] : "-1")
+	var curLevelNum = 1;
+	yatc_output.appendLine("new version55")
 	for (let i = 0; i < levelDoc.lineCount - 2; i++) {
-		if(Number.isInteger(digitToFind) && digitToFind == curLevelCount) {
-			return new vscode.Position(i, 0)
+		if (levelDoc.lineAt(i).text.startsWith("@" + levelNameToFind)) {
+			curLevelNum -= 1
+			if (digitToFind < 0) {
+				return new vscode.Position(i, 0)
+			}
 		}
-
-		if (!Number.isInteger(digitToFind) && levelDoc.lineAt(i).text.startsWith("@" + levelNameToFind)) {
+		if(digitToFind == curLevelNum && levelNameToFind.startsWith("level")) {
 			return new vscode.Position(i, 0)
 		}
 		
-		if (levelDoc.lineAt(i).text.startsWith("=====")) {
-			curLevelCount += 1
+		if (levelDoc.lineAt(i).text.startsWith("=====") && !levelDoc.lineAt(i + 1).text.startsWith("@")) {
+			curLevelNum += 1
 		}
 
 	}
