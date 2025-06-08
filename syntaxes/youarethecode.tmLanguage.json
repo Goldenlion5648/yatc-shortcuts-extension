@@ -15,7 +15,7 @@
 				},
 				{
 					"name": "store.yatc",
-					"match": "\\b(store|load|enter|save|reload|reset|discard)\\b"
+					"match": "\\b(store|load|enter|save|reload|reset|discard|reference)\\b"
 				},
 				{
 					"name": "relative_spot.yatc",

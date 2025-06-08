@@ -147,6 +147,7 @@ output $a
 
 21233
 ===================
+@test2
 ~store $a = 4
 store $a = $a * 2
 store $b = $a % 3
