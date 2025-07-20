@@ -8,10 +8,10 @@
     },
     "onEnterRules": [
         {
-            "beforeText": "^##(.*)",
+            "beforeText": "(.*?)##(.*)",
             "action": {
                 "indent": "none",
-                "appendText": "## "
+                "appendText": "$1## "
             }
         }
     ],

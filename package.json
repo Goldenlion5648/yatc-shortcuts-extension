@@ -26,6 +26,10 @@
         "extensions": [
           ".yatc"
         ],
+        "icon": {
+          "dark": "./icons/icon_no_background.png",
+          "light": "./icons/icon_no_background.png"
+        },
         "aliases": [
           "You Are The Code"
         ],
@@ -46,24 +50,28 @@
         "title": "YATC: Go To Display Order"
       },
       {
+        "command": "yatc-shortcuts.showLineNums",
+        "title": "YATC: Show Line Numbers"
+      },
+      {
         "command": "yatc-shortcuts.goToLevelList",
         "title": "YATC: Go To Level List"
       }
     ],
     "snippets": [
-			{
-				"language": "youarethecode",
-				"path": "snippets/yatc_templates.code-snippets"
-			}
-		],
+      {
+        "language": "youarethecode",
+        "path": "snippets/yatc_templates.code-snippets"
+      }
+    ],
     "grammars": [
-			{
-				"language": "youarethecode",
-				"scopeName": "source.yatc",
-				"path": "syntaxes/youarethecode.tmLanguage.json"
-			}
-		],
-    "keybindings":[
+      {
+        "language": "youarethecode",
+        "scopeName": "source.yatc",
+        "path": "syntaxes/youarethecode.tmLanguage.json"
+      }
+    ],
+    "keybindings": [
       {
         "command": "yatc-shortcuts.goToDisplayOrder",
         "key": "alt+d"
@@ -71,6 +79,10 @@
       {
         "command": "yatc-shortcuts.goUpAFolder",
         "key": "alt+q"
+      },
+      {
+        "command": "yatc-shortcuts.showLineNums",
+        "key": "alt+u"
       },
       {
         "command": "yatc-shortcuts.goToLevelList",

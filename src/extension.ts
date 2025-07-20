@@ -1,6 +1,9 @@
 import * as vscode from 'vscode';
 
 let yatc_output = vscode.window.createOutputChannel("yatc-output");
+let showingLineNumSettingEnabled = true
+const onDidChangeInlayHintsEmitter = new vscode.EventEmitter<void>();
+const onDidChangeInlayHints = onDidChangeInlayHintsEmitter.event;
 
 function getNonDisplayOrderURI(document: vscode.TextDocument) {
 	const fullPath = document.uri.path
@@ -41,7 +44,9 @@ export function activate(context: vscode.ExtensionContext) {
 		const editor = vscode.window.activeTextEditor;
 		if (editor) {
 			const document = editor.document;
-			const targetUri = vscode.Uri.joinPath(vscode.Uri.file(document.fileName), "../../", "display_order.yatc")
+			const targetUri = vscode.Uri.joinPath(vscode.Uri.file(document.fileName), 
+			document.fileName.includes("display_order") ? "../../" : "../", 
+			"display_order.yatc")
 			const pos = new vscode.Position(0, 0);
 			await vscode.window.showTextDocument(targetUri, { selection: new vscode.Range(pos, pos) });
 		}
@@ -70,22 +75,32 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 	context.subscriptions.push(goToLevelList);
 
+	context.subscriptions.push(vscode.commands.registerCommand('yatc-shortcuts.showLineNums', () => {
+		showingLineNumSettingEnabled = !showingLineNumSettingEnabled;
+		onDidChangeInlayHintsEmitter.fire();
+		// vscode.window.showInformationMessage(`showingLineNumSettingEnabled is now: ${showingLineNumSettingEnabled}`);
+	}));
+
+
 
 	const provider = vscode.languages.registerDefinitionProvider(
 		{ language: 'youarethecode' },
 		{
 			provideDefinition(document, position, token) {
-				const word = document.getText(document.getWordRangeAtPosition(position));
+				// var adjustedPos = new vscode.Position(position.line, position.)
+				var newWord : string = document.lineAt(position.line).text.split(" ").at(-1)!!
+				// const word = document.getText(document.getWordRangeAtPosition(position));
+				vscode.commands.executeCommand('editor.action.addToNavigationStack');
 				if(document.lineAt(position.line).text.includes("/") == false) {
 					yatc_output.appendLine("doing top")
 					return vscode.workspace.openTextDocument(getNonDisplayOrderURI(document)).then(doc => {
-						let levelPos = getStartingPosOfLevelFromLevelDoc(doc, word)
+						let levelPos = getStartingPosOfLevelFromLevelDoc(doc, newWord)
 						return new vscode.Location(doc.uri, levelPos)
 					})
 				}
 				yatc_output.appendLine("doing bottom")
 				const parent_folder = vscode.Uri.joinPath(vscode.Uri.file(document.fileName), "../")
-				const targetUri = vscode.Uri.joinPath(parent_folder, word, "display_order.yatc");
+				const targetUri = vscode.Uri.joinPath(parent_folder, newWord, "display_order.yatc");
 				
 				let pos: vscode.Position = new vscode.Position(0, 0)
 				return new vscode.Location(targetUri, pos);
@@ -96,18 +111,40 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(provider);
 
 	vscode.languages.registerInlayHintsProvider('youarethecode', {
+		onDidChangeInlayHints,
 		provideInlayHints(document, range, token) {
 			const hints: vscode.InlayHint[] = [];	
 			var curLevelCount = 1
+			var curLineNum = 0
+			var sawBlank = false
 			for (let i = 0; i < document.lineCount - 2; i++) {
-				if (i == 0 || document.lineAt(i).text.startsWith("=====")) {
+				let startsWithEqualSigns = document.lineAt(i).text.startsWith("=====")
+				if (i == 0 || startsWithEqualSigns) {
+					curLineNum = 0
+					sawBlank = false
 					if (!document.lineAt(i).text.startsWith("@") && i + 1 < document.lineCount && !document.lineAt(i+1).text.startsWith("@")) {
 						var posToShowAt = i == 0 ? new vscode.Position(i, 50) : new vscode.Position(i, 5);
 						const hint = new vscode.InlayHint(posToShowAt, `🔎 Level ${curLevelCount}`, vscode.InlayHintKind.Type);
 						hints.push(hint);
 						curLevelCount += 1
 					}
+				} 
+				
+				if (showingLineNumSettingEnabled && !startsWithEqualSigns) {
+					if(document.lineAt(i).text.startsWith("@") || document.lineAt(i).text.startsWith("!") || sawBlank) {
+						continue
+					}
+					if(document.lineAt(i).text.trim() == "") {
+						sawBlank = true
+						continue
+					}
+
+					curLineNum += 1
+					var lineNumHint = new vscode.Position(i, 0);
+					const hint = new vscode.InlayHint(lineNumHint, `[${curLineNum}]`, vscode.InlayHintKind.Type);
+					hints.push(hint);
 				}
+
 			}
 			return hints;
 		}

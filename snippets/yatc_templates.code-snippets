@@ -24,6 +24,20 @@
 			"show $1 \\$coins"
 		]
 	},
+	"show LEVELS_HERE coins": {
+		"scope": "youarethecode",
+		"prefix": "show LEVELS_HERE coin",
+		"body": [
+			"show %LEVELS_HERE% \\$coins"
+		]
+	},
+	"show total_coins": {
+		"scope": "youarethecode",
+		"prefix": "show total_coins",
+		"body": [
+			"show $1 \\$total_coins"
+		]
+	},
 	"show gems": {
 		"scope": "youarethecode",
 		"prefix": "show gems",
@@ -43,6 +57,14 @@
 		"prefix": "store $a",
 		"body": [
 			"store \\$a = \\$a + 1"
+		],
+		"description": "store value plus 1"
+	},
+	"store $b": {
+		"scope": "youarethecode",
+		"prefix": "store $b",
+		"body": [
+			"store \\$b = \\$b + 1"
 		],
 		"description": "store value plus 1"
 	},

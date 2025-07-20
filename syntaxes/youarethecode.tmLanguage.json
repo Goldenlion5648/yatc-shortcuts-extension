@@ -11,7 +11,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.youarethecode",
-					"match": "(goto|swap|run|dupe|remove|replace|delete|if|then|else|\\^typing)\\b"
+					"match": "(goto|swap|deletevar|run|dupe|remove|replace|delete|if|then|else|\\^typing)\\b"
 				},
 				{
 					"name": "store.yatc",
@@ -31,7 +31,7 @@
 				},
 				{
 					"name": "support.constant",
-					"match": "(toggle|pay|output|show|close|all|text|vars|changes|bugs|variables)\\b"
+					"match": "\\b(toggle|pay|output|feedback|show|close|all|text|changes|bugs|variables)\\b"
 				},
 				{
 					"name": "entity.name.class",
@@ -39,7 +39,7 @@
 				},
 				{
 					"name": "constant.language",
-					"match": "\\b(?:true|false|\\d+)\\b"
+					"match": "\\b(?:true|false|give|\\d+)\\b"
 				},
 				{
 					"name": "lines.yatc",
