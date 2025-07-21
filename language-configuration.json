@@ -8,10 +8,45 @@
     },
     "onEnterRules": [
         {
-            "beforeText": "(.*?)##(.*)",
+            "beforeText": "`b`##(.*)",
             "action": {
                 "indent": "none",
-                "appendText": "$1## "
+                "appendText": "`b`## "
+            }
+        },
+        {
+            "beforeText": "`p`##(.*)",
+            "action": {
+                "indent": "none",
+                "appendText": "`p`## "
+            }
+        },
+        {
+            "beforeText": "`t`##(.*)",
+            "action": {
+                "indent": "none",
+                "appendText": "`t`## "
+            }
+        },
+        {
+            "beforeText": "`d`##(.*)",
+            "action": {
+                "indent": "none",
+                "appendText": "`d`## "
+            }
+        },
+        {
+            "beforeText": "`r`##(.*)",
+            "action": {
+                "indent": "none",
+                "appendText": "`r`## "
+            }
+        },
+        {
+            "beforeText": "##(.*)",
+            "action": {
+                "indent": "none",
+                "appendText": "## "
             }
         }
     ],
