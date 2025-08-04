@@ -18,7 +18,7 @@ This VSCode Extension aids with creating levels for the game "You Are The Code" 
 ## Full Syntax Coloring
 
 Add this to your `settings.json` to get all the colors shown in the screenshot above
-```
+```json
 "editor.tokenColorCustomizations": {
     "[*]": {
         "textMateRules": [
